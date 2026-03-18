@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Ilusão da Transparência: O Abismo entre a Governança do PL 2.338/2023 e a Capacidade Institucional do Estado Brasileiro</title>
+<meta name="description" content="O abismo entre a governança do PL 2.338/2023 e a capacidade institucional do Estado Brasileiro. Por Thiago Luiz Carreiro Rocha.">
+<meta property="og:title" content="A Ilusão da Transparência — Thiago Luiz Carreiro Rocha">
+<meta property="og:description" content="O Poder Público corre o risco de ser governado por seus sistemas, em vez de governá-los. Um artigo sobre o abismo entre a regulação de IA e a capacidade real do Estado Brasileiro.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://og-image-generator.vercel.app/A%20Ilus%C3%A3o%20da%20Transpar%C3%AAncia.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Ilusão da Transparência — Thiago Luiz Carreiro Rocha">
+<meta name="twitter:description" content="O Poder Público corre o risco de ser governado por seus sistemas, em vez de governá-los.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --border: #222;
+    --text: #e8e4dc;
+    --muted: #888;
+    --accent: #c8f542;
+    --accent-dim: rgba(200, 245, 66, 0.08);
+    --red: #ff4b2b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* PROGRESS BAR */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--accent);
+    z-index: 999;
+    transition: width 0.1s linear;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(13,13,13,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav .brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  nav .badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 8rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-content { align-self: center; }
+
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+    -webkit-text-stroke: 0px;
+  }
+
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .author {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+
+  .author strong {
+    display: block;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  .author span {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .grade {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .grade small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .scroll-hint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: end;
+    padding-bottom: 1rem;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+    margin: 0;
+  }
+
+  /* ARTICLE */
+  .article-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* INTRO BLOCK */
+  .intro-block {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intro-sidebar {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
+
+  .section-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--border);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  /* BODY TEXT */
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #d4cfc6;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-body p:first-child::first-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    float: left;
+    margin-right: 0.1em;
+    color: var(--accent);
+  }
+
+  /* PULLQUOTE */
+  .pullquote {
+    border-left: 3px solid var(--accent);
+    padding: 1.2rem 2rem;
+    margin: 2.5rem 0;
+    background: var(--accent-dim);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .pullquote p {
+    font-size: 1.2rem !important;
+    font-style: italic;
+    color: var(--text) !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+  }
+
+  .pullquote p::before { content: none !important; }
+
+  /* FOOTNOTE */
+  .footnote {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 0.8rem;
+    margin-top: 2rem;
+    line-height: 1.6;
+  }
+
+  /* SECTION BLOCKS */
+  .section-block {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-sidebar {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
+
+  /* CONCLUSION */
+  .conclusion {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .conclusion-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--text);
+    margin-bottom: 3rem;
+    line-height: 1;
+  }
+
+  .conclusion-title span { color: var(--accent); }
+
+  /* SHADOW MODE CARD */
+  .proposal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border-radius: 2px;
+  }
+
+  .proposal-card .card-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .proposal-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .proposal-card p {
+    font-size: 1rem !important;
+    color: #c8c3ba !important;
+    margin: 0 !important;
+    line-height: 1.8 !important;
+  }
+
+  .proposal-card p::before { content: none !important; }
+  .proposal-card p::first-letter { font-size: inherit; font-family: inherit; color: inherit; float: none; margin: 0; line-height: inherit; }
+
+  /* REFERENCES */
+  .references {
+    padding: 4rem 0 6rem;
+  }
+
+  .ref-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  .ref-list {
+    list-style: none;
+  }
+
+  .ref-list li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.6;
+  }
+
+  .ref-list li:last-child { border-bottom: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  footer .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  footer p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* DECORATIVE */
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .intro-block, .section-block {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .intro-sidebar, .section-sidebar {
+      position: static;
+    }
+
+    .section-number {
+      font-size: 4rem;
+    }
+
+    nav { padding: 1rem; }
+    .hero { padding: 7rem 1.2rem 3rem; }
+    .article-wrapper { padding: 0 1.2rem; }
+    footer { padding: 2rem 1.2rem; }
+  }
+
+  /* FADE IN ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <span class="brand">Thiago Rocha · PGUERJ / ITS Rio</span>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-label">Artigo Acadêmico · Pós-Graduação em IA e Regulação Tecnológica</p>
+    <h1>A Ilusão da <em>Transparência</em></h1>
+    <p class="hero-sub">O abismo entre a governança do PL 2.338/2023 e a capacidade institucional do Estado Brasileiro.</p>
+    <div class="hero-meta">
+      <div class="author">
+        <strong>Thiago Luiz Carreiro Rocha</strong>
+        <span>Coordenador de TI · PGUERJ · UERJ</span>
+      </div>
+    </div>
+  </div>
+  <p class="scroll-hint">↓ &nbsp; Leia o artigo</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ARTICLE -->
+<div class="article-wrapper">
+
+  <!-- INTRO -->
+  <div class="intro-block fade-in">
+    <div class="intro-sidebar">
+      <p class="section-title">Introdução</p>
+    </div>
+    <div class="article-body">
+      <p>A incorporação de sistemas de Inteligência Artificial pela Administração Pública brasileira configura um cenário de risco iminente: a tecnologia avança sobre a estrutura decisória estatal em velocidade muito superior à capacidade de compreensão dos órgãos de controle. Não se trata mais de uma promessa de modernização, mas de uma realidade que já pressiona tribunais e executivos municipais. O ponto central deste trabalho, contudo, não é a tecnologia em si, mas a desconexão entre as normas programáticas que tentam domesticá-la e a realidade operacional do Estado.</p>
+
+      <p>O Projeto de Lei n.º 2.338/2023 busca estabelecer um regime de governança no Capítulo IV, criando obrigações específicas para o Poder Público. A proposta alinha-se aos padrões internacionais, exigindo explicabilidade e supervisão humana. Entretanto, a aplicação desses dispositivos no cotidiano administrativo enfrenta barreiras que a letra da lei ignora.</p>
+
+      <div class="pullquote">
+        <p>Corre-se o risco de consolidar o que Frank Pasquale define como uma "sociedade de caixa preta", onde a opacidade técnica, blindada por contratos e segredos comerciais, inviabiliza a accountability.</p>
+      </div>
+
+      <p>A hipótese aqui sustentada é que as exigências do PL 2.338/2023 colidem com gargalos estruturais do Estado brasileiro em três frentes: a modelagem das contratações públicas, a reprodução acrítica de desigualdades sociais via dados e a burocratização da revisão humana. A governança, nesse sentido, depende menos do texto legal e mais da capacidade institucional de auditar o que se contrata.</p>
+
+      <div class="footnote">
+        PASQUALE, Frank. The Black Box Society: The Secret Algorithms That Control Money and Information. Cambridge: Harvard University Press, 2015.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section-block fade-in">
+    <div class="section-sidebar">
+      <span class="section-number">01</span>
+      <p class="section-title">O Estado como laboratório de alto risco</p>
+    </div>
+    <div class="article-body">
+      <p>O PL 2.338/2023 classifica corretamente diversas aplicações estatais como de "alto risco" (Art. 14), reconhecendo que o erro no setor público gera violação de direitos fundamentais, e não apenas prejuízo financeiro. No entanto, a eficácia dessa classificação esbarra na origem da tecnologia utilizada.</p>
+
+      <p>Com exceção de algumas ilhas de competência técnica, como o SERPRO ou setores de TI de tribunais superiores, a maior parte da Administração Pública não desenvolve IA; ela a adquire no mercado. Nesse contexto, a governança de IA torna-se, essencialmente, um problema de Direito Administrativo e compras públicas. Ao licitar soluções fechadas, o ente público frequentemente importa a opacidade do segredo industrial, que Pasquale aponta como o principal escudo contra a transparência.</p>
+
+      <div class="pullquote">
+        <p>Embora os Artigos 22 e 24 do PL exijam padronização e transparência, essas normas tendem a ser inócuas se não forem traduzidas em cláusulas contratuais robustas baseadas na Nova Lei de Licitações.</p>
+      </div>
+
+      <p>Sem Estudos Técnicos Preliminares que exijam a abertura de caixas-pretas ou auditoria de código, o gestor público fica refém das informações fornecidas pela contratada. A "supervisão humana efetiva" (Art. 8º) acaba limitada pelo que o fornecedor permite ver, transformando a transparência legal em uma formalidade sem efeito prático.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2 -->
+  <div class="section-block fade-in">
+    <div class="section-sidebar">
+      <span class="section-number">02</span>
+      <p class="section-title">A Digital Poorhouse e a rotina burocrática</p>
+    </div>
+    <div class="article-body">
+      <p>A Avaliação de Impacto Algorítmico (AIA), prevista nos artigos 25 e 26, surge como o principal instrumento preventivo de governança, com dever de publicidade reforçado para o setor público (Art. 23, III).</p>
+
+      <p>A questão, todavia, é como esse instrumento será absorvido pela rotina administrativa. A literatura crítica, notadamente Virginia Eubanks em Automating Inequality, alerta que a automação de serviços sociais costuma criar uma "digital poorhouse", voltada mais à vigilância e exclusão de beneficiários do que à garantia de direitos. No Brasil, Tarcizio Silva reforça essa análise com o conceito de "racismo algorítmico", indicando que a neutralidade técnica muitas vezes apenas mascara preconceitos já existentes nas bases de dados governamentais.</p>
+
+      <div class="pullquote">
+        <p>O risco concreto é que a AIA se torne apenas mais um documento processual no SEI, preenchido de forma padronizada para viabilizar a contratação, sem uma análise crítica real dos vieses.</p>
+      </div>
+
+      <p>Ademais, o Artigo 23, § 2º, determina a descontinuação do sistema caso os riscos não possam ser mitigados. Na prática administrativa, é improvável que um gestor tenha capital político para encerrar um programa governamental automatizado após vultosos investimentos, apenas com base em um relatório de risco. A tendência inercial da administração é a manutenção do sistema, esvaziando a eficácia do dispositivo legal.</p>
+
+      <div class="footnote">
+        EUBANKS, Virginia. Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor. New York: St. Martin's Press, 2018.<br>
+        SILVA, Tarcizio. Racismo Algorítmico: inteligência artificial e discriminação nas redes digitais. São Paulo: Edições Sesc São Paulo, 2022.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3 -->
+  <div class="section-block fade-in">
+    <div class="section-sidebar">
+      <span class="section-number">03</span>
+      <p class="section-title">O viés da automação: limites cognitivos</p>
+    </div>
+    <div class="article-body">
+      <p>O Artigo 23, inciso II, aposta na revisão humana como salvaguarda final contra decisões automatizadas injustas. O legislador pressupõe que a inserção de um agente público no ciclo decisório é suficiente para validar o ato.</p>
+
+      <p>Estudos de psicologia cognitiva, como os de Linda Skitka sobre o "viés da automação" (automation bias), demonstram que essa premissa é falha: operadores humanos tendem a confiar excessivamente em sugestões algorítmicas, economizando esforço cognitivo ao concordar com a máquina, especialmente em situações de incerteza.</p>
+
+      <div class="pullquote">
+        <p>Transpondo isso para a realidade do serviço público brasileiro, marcado por sobrecarga de trabalho e pressão por metas de produtividade, a revisão humana corre o risco de se tornar uma ficção.</p>
+      </div>
+
+      <p>Um servidor com centenas de processos para analisar dificilmente dedicará tempo para contraditar uma recomendação algorítmica. O ato de revisão tende a virar uma chancela automática. Para que a governança proposta no PL funcione, não basta a previsão legal; é necessário um desenho organizacional que garanta tempo hábil e autonomia técnica ao servidor, algo frequentemente ausente nas repartições.</p>
+
+      <div class="footnote">
+        SKITKA, Linda J.; MOSIER, Kathleen L.; BURDICK, Mark. Does automation bias decision-making? International Journal of Human-Computer Studies, v. 51, n. 5, p. 991-1006, 1999.
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusion fade-in">
+    <h2 class="conclusion-title">Considerações <span>Finais</span></h2>
+    <div class="article-body">
+      <p>O modelo de governança delineado no Capítulo IV do PL 2.338/2023 é tecnicamente consistente e alinhado às discussões globais sobre regulação de IA. Ele estabelece os deveres corretos de avaliação de risco, transparência e supervisão humana.</p>
+
+      <p>Contudo, a análise da capacidade institucional do Estado brasileiro sugere um abismo entre a norma e sua aplicação. O sucesso da regulação não dependerá apenas da atuação da autoridade competente, mas de uma mudança na lógica interna da Administração. Enquanto o Estado operar com baixa capacidade de auditoria sobre fornecedores privados, dados precários e servidores pressionados por eficiência quantitativa, as ferramentas de governança servirão mais para blindar juridicamente o erro automatizado do que para proteger o cidadão.</p>
+
+      <div class="proposal-card">
+        <p class="card-label">Contribuição Original · Proposta Legislativa</p>
+        <h3>Shadow Mode Obrigatório</h3>
+        <p>Para transpor esse abismo, sugere-se a inclusão de um dispositivo no Capítulo X (Sandbox Regulatório) que obrigue uma fase de transição assistida para sistemas de governo de alto risco. A ideia é impedir a virada de chave imediata: antes de produzir efeitos jurídicos, a IA deveria operar obrigatoriamente em shadow mode (modo sombra), rodando em paralelo à decisão humana apenas para calibração e auditoria de resultados. Isso forçaria a administração a validar a ferramenta com dados reais e daria ao servidor a chance de entender o sistema sem a pressão imediata de validar atos em massa, transformando o risco em aprendizado controlado.</p>
+      </div>
+
+      <p>A lei é um passo inicial necessário, mas insuficiente. Sem investimentos em capacitação técnica própria e uma revisão crítica dos processos de contratação de tecnologia, o Poder Público corre o risco de ser governado por seus sistemas, em vez de governá-los.</p>
+    </div>
+  </div>
+
+  <!-- REFERÊNCIAS -->
+  <div class="references fade-in">
+    <h3 class="ref-title">Referências</h3>
+    <ul class="ref-list">
+      <li>BRASIL. Projeto de Lei n.º 2.338, de 2023. Dispõe sobre o desenvolvimento, fomento, uso ético e responsável da inteligência artificial com base na centralidade da pessoa humana. Brasília: Congresso Nacional, 2025.</li>
+      <li>EUBANKS, Virginia. Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor. New York: St. Martin's Press, 2018.</li>
+      <li>PASQUALE, Frank. The Black Box Society: The Secret Algorithms That Control Money and Information. Cambridge: Harvard University Press, 2015.</li>
+      <li>SILVA, Tarcizio. Racismo Algorítmico: inteligência artificial e discriminação nas redes digitais. São Paulo: Edições Sesc São Paulo, 2022.</li>
+      <li>SKITKA, Linda J.; MOSIER, Kathleen L.; BURDICK, Mark. Does automation bias decision-making? International Journal of Human-Computer Studies, v. 51, n. 5, p. 991-1006, 1999.</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <p class="footer-logo">Thiago Luiz Carreiro Rocha</p>
+  <p>Pós-Graduação em Inteligência Artificial e Regulação Tecnológica<br>
+  ITS Rio · UERJ · CEPED · 2026</p>
+</footer>
+
+<script>
+  // Progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    progress.style.width = pct + '%';
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
